@@ -54,8 +54,6 @@ namespace WebMVC_API_Client.Controllers
             //doc.LoadFromFile(@"C:/Users/willi/source/LoremIpsum.pdf");
             //doc.Print();
 
-            TempData["Id"] = id;
-
             return View(response);
         }
         

@@ -19,6 +19,7 @@
     <PackageReference Include="FreeSpire.Barcode" Version="6.6.0" />
     <PackageReference Include="bootstrap" Version="5.2.2" />
     <PackageReference Include="jQuery" Version="3.6.1" />
+    <PackageReference Include="TwinCAT-HMI-Barcode" Version="1.0.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,5 +27,6 @@
     <None Remove="FreeSpire.Barcode" />
     <None Remove="bootstrap" />
     <None Remove="jQuery" />
+    <None Remove="TwinCAT-HMI-Barcode" />
   </ItemGroup>
 </Project>

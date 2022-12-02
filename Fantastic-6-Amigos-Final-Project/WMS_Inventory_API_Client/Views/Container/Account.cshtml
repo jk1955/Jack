@@ -49,7 +49,7 @@
                 </td>
                 <td>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@item.Id">Open modal for getbootstrap</button>
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@item.Id" >Barcode</button>
                 </td>
                 @{
                     TempData["accountId"] = Html.DisplayFor(modelItem => item.StorageLocation.AccountId);
@@ -64,7 +64,7 @@
 
 @{
     int Id = 2;
- }
+}
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -79,21 +79,15 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Recipient:</label>
-                        <input type="text" class="form-control" id="recipient-name">
+                    <div class="form-group" id="barcodeDiv">
+                        <img id="barcodeImage" class="barcodeImage"/>
                     </div>
-                    <div class="form-group">
-                        <label for="message-text" class="col-form-label">Message:</label>
-                        <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Send message</button>
-                    <input type="hidden" asp-for="@Id" />
-                    <div class="form-group">
-                        <input type="submit" value="Save" class="btn btn-primary" />
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="hidden" asp-for="@Id" />
+                        <div class="form-group">
+                            <input type="submit" value="Save" class="btn btn-primary" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -111,19 +105,34 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
         integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-<!-- Optional JavaScript -->
-<script>$('#exampleModal').on('show.bs.modal', function (event) {
-    console.log(@TempData["accountId"]);
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
+
+<script>
+
+    $('#exampleModal').on('show.bs.modal', function (event) {
+
+        console.log("TempData[accountId] is ", @TempData["accountId"]);
+
+        const image = document.createElement("img");
+        var imageElement = document.getElementById("barcodeDiv").appendChild(image);
+        imageElement.setAttribute("id", "barcodeImage");
+        imageElement.setAttribute("class", "barcodeImage");
+
         var button = $(event.relatedTarget) // Button that triggered the modal
 
-        var recipient = button.data('whatever'); // Extract info from data-* attributes
+        var containerId = button.data('whatever'); // Extract info from data-* attributes
 
-        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-        var modal = $(this)
-        modal.find('.modal-title').text('New message to ' + recipient)
-        modal.find('.modal-body input').val(recipient)
-    })</script>
+        $('.modal-title').text('Barcode for Container # ' + containerId);
+
+        JsBarcode("#barcodeImage", containerId, {
+		    format: "CODE39",
+            displayValue: false
+		});
+ 
+        $("#barcodeImage").remove();
+     });
+
+</script>
 
 <br />
 <br />

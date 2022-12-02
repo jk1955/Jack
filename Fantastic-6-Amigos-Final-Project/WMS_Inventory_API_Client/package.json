@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "html5-qrcode": "^2.3.4"
+  },
+  "dependencies": {
+    "jsbarcode": "^3.11.5"
   }
 }

@@ -13,7 +13,7 @@ namespace WMS_Inventory_API
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Server=localhost,1433;Database=InventoryAPI;user=sa;pwd=jk$19550829";
+           var connectionString = "Server=localhost,1433;Database=InventoryAPI;user=sa;pwd=jk$19550829";
             //var connectionString = "Server=localhost,1433;Database=InventoryAPI;user=sa;pwd=Browns321";
             optionsBuilder.UseSqlServer(connectionString);
 
