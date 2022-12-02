@@ -1,0 +1,86 @@
+﻿@model IEnumerable<WMS_Inventory_API_Client.Models.StorageLocation>
+
+@{
+    ViewData["Title"] = "Storage Location Account";
+}
+
+<h1 class="page-header">Storage Location</h1>
+
+<form action="/StorageLocation/Create">
+    <div>
+        <button type="submit" class="btn btn-primary">Add new location</button>
+    </div>
+</form>
+
+<div id="no-more-tables">
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.LocationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Address2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCode)
+            </th>
+            <!--<th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>-->
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td data-title="Location Name">
+                @Html.DisplayFor(modelItem => item.LocationName)
+            </td>
+            <td data-title="Address1">
+                @Html.DisplayFor(modelItem => item.Address1)
+            </td>
+            <td data-title="Address2">
+                @Html.DisplayFor(modelItem => item.Address2)
+            </td>
+            <td data-title="City">
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td data-title="State">
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td data-title="Zipcode">
+                @Html.DisplayFor(modelItem => item.ZipCode)
+            </td>
+
+            <!--<td>
+            <td data-title="Longitude">
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td data-title="Latitude">
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>-->
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<br />
+<br />

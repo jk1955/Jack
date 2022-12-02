@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WMS_Inventory_API_Client.Models.Container>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="page-header">Containers</h1>
+
+
+<form action="/Containers/Create">
+    <div>
+        <button type="submit" class="btn btn-primary">Add Container</button>
+    </div>
+</form>
+
+<div id="no-more-tables">
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.StorageLocation.LocationName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StorageLocation.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td data-title="Location Name">
+                @Html.DisplayFor(modelItem => item.StorageLocation.LocationName)
+            </td>
+            <td data-title="Location Id">
+                @Html.DisplayFor(modelItem => item.StorageLocation.Id)
+            </td>
+            <td data-title="Type">
+                @Html.DisplayFor(modelItem => item.Type)
+            </td>
+            <td data-title="Description">
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+</div>
+<br />
+<br />

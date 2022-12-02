@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+    <script src="https://unpkg.com/html5-qrcode@2.0.9/dist/html5-qrcode.min.js"></script>
+<body>
+    <div align="center" class="menu-header">
+        <img class="menu-logo" src="/css/WMS.logo.jpg" alt="WMS Logo" />
+        <h1>
+            <span>WMS Inventory Tracker</span>
+        </h1>
+
+    </div>
+    <br />
+    <div align="left" class="menu">
+        <div align="center">
+            <h1>
+                <span>Main Menu</span>
+            </h1>
+        </div>
+        <br />
+        <ul>
+            <li>
+                <a style="color: white; cursor: pointer" onClick='location.href="/Accounts/Details/1"'><u>Account</u></a>
+            </li>
+            <li>
+                <a style="color: white; cursor: pointer" onClick='location.href="/StorageLocation/Account/1"'><u>Storage Locations</u></a>
+            </li>
+            <li>
+                <a style="color: white; cursor: pointer" onClick='location.href="/Container/Account/1"'><u>Containers</u></a>
+            </li>
+            <li>
+                <a href='@Url.Action("Index", "Contents")'>Content</a>
+            </li> 
+        </ul>
+            <div id="qr-reader" style="width: 300px"></div>
+         <script>
+                function onScanSuccess(decodedText, decodedResult)
+                    {
+                        console.log(`Code scanned = ${decodedText}`, decodedResult);
+                    }
+                        var html5QrcodeScanner = new Html5QrcodeScanner(
+                             "qr-reader", { fps: 10, qrbox: 250 });
+                           html5QrcodeScanner.render(onScanSuccess);
+        </script>
+        @*   class Html5Qrcode {
+                    constructor(elementId: string, config: Html5QrcodeFullConfig) {}
+
+                /** Start scanning. */
+                    start(cameraIdOrConfig: Html5QrcodeIdentifier,
+                    configuration: Html5QrcodeCameraScanConfig | undefined,
+                    qrCodeSuccessCallback: QrcodeSuccessCallback | undefined,
+                    qrCodeErrorCallback: QrcodeErrorCallback | undefined,
+                ): Promise<null>
+                         {}
+
+                /** Stop scanning. */
+                stop(): Promise<void>
+                {}
+
+                /** Clear the rendered surface. */
+                clear(): void {}
+
+                /** Scan a file. */
+                scanFile(
+                imageFile: File,
+                showImage?: boolean): Promise<string>
+                    {}
+
+                    /** Returns list of cameras in the device, invokes permission request. */
+                static getCameras(): Promise<Array><CameraDevice>/> {}
+            }*@
+        
+        <br />
+        <br />
+        <br />
+    </div>
+
+</body>

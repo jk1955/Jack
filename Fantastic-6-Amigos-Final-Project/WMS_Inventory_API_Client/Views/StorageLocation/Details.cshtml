@@ -1,0 +1,132 @@
+﻿@model WMS_Inventory_API_Client.Models.StorageLocation
+
+@{
+    ViewData["Title"] = "Details";
+    TempData["accountId"] = Html.DisplayFor(model => model.AccountId);
+}
+
+<h1>Details of Storage Location</h1>
+
+
+
+<div id="no-more-tables">
+    <table class="table">
+        <caption>
+            Storage Location
+        </caption>
+        <thead>
+            <tr>
+                <th>
+                    Location Name
+                </th>
+                <th>
+                    Address 1
+                </th>
+                <th>
+                    Address 2
+                </th>
+                <th>
+                    City
+                </th>
+                <th>
+                   State
+                </th>
+                <th>
+                    ZipCode
+                </th>
+                <th>
+                   Longitude
+                </th>
+                <th>
+                   Latitude
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+    <td data-title ="Location Name">
+                    @Html.DisplayFor(model => model.LocationName)
+    </td>
+
+    <td data-title="Address1">
+                    @Html.DisplayFor(model => model.Address1)
+    </td>
+
+    <td data-title="Address2">
+                    @Html.DisplayFor(model => model.Address2)
+    </td>
+
+    <td data-title="City">
+                    @Html.DisplayFor(model => model.City)
+    </td>
+
+    <td data-title ="State">
+                    @Html.DisplayFor(model => model.State)
+    </td>
+
+    <td data-title="ZipCode">
+                    @Html.DisplayFor(model => model.ZipCode)
+    </td>
+
+   <td data-title="Longitude">
+                    @Html.DisplayFor(model => model.Longitude)
+    </td>
+
+   <td data-title="Latitude">
+                    @Html.DisplayFor(model => model.Latitude)
+    </td>
+
+            </tr>
+        </tbody>
+    </table>
+    
+<br/>
+<div id="no-more-tables">
+<table class="table">
+        <caption>
+            Containers
+        </caption>
+    <thead>
+        <tr>
+            <th>
+                Type
+            </th>
+            <th>
+                Description
+            </th>
+             <th>
+                 Details
+              </th>
+           
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.container)
+        {
+            <tr>
+                    <td data-title="Type">
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                    <td data-title="Description">
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @{
+                        TempData["id"] = item.Id;
+                    }
+                    <a style="color: royalblue; cursor: pointer" onClick='location.href="/Container/Edit/"+@TempData["id"]'><u>Edit</u></a> |
+                    <a style="color: royalblue; cursor: pointer" onClick='location.href="/Container/Details/"+@TempData["id"]'><u>Details</u></a> |
+                    <a style="color: royalblue; cursor: pointer" onClick='location.href="/Container/Delete/"+@TempData["id"]'><u>Delete</u></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+</div>
+
+<div>
+    <a style="color: white; cursor: pointer" onClick='location.href="/StorageLocation/Account/"+@TempData["accountId"]'><u>Back to Storage Location List</u></a>
+</div>
+<br />
+<br />

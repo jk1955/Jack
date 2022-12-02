@@ -1,0 +1,44 @@
+﻿@model WMS_Inventory_API_Client.Models.Account
+
+<body>
+    <div align="center" class="menu-header">
+        <img src="/css/WMS.logo.jpg" alt="WMS Logo"/>
+        <h1>
+            <span>WMS Inventory Tracker</span>
+        </h1>
+    </div>
+    <br />
+    <div align="left" class="menu">
+        <div align="center">
+            <h1>
+                <span>Login</span>
+            </h1>
+        </div>
+        <br />
+  
+    <form asp-action="Login" id="Login">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Email" class="control-label"></label>
+        <input asp-for="Email" class="form-control" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password" class="control-label"></label>
+        <input asp-for="Password" class="form-control" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <input type="submit" value="Login" class="btn btn-primary" />
+    </div>
+    </form>
+    
+    <form action="/Accounts/Create">
+    <div>
+        <button type="submit" class="btn btn-primary">Create Account</button>
+    </div>
+    </form>
+    </div>
+</body>
+

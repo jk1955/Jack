@@ -1,0 +1,82 @@
+﻿@model WMS_Inventory_API_Client.Models.Account
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="page-header">Account Details</h1>
+
+
+<div id="no-more-tables">
+<table class="table">
+    <caption>
+        Account
+    </caption>
+    <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Email
+            </th>
+            <th>
+                Address 1
+            </th>
+            <th>
+                Address 2
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                State
+            </th>
+            <th>
+                Zip Code
+            </th>
+        </tr>
+    </thead>
+  <tbody>
+        <tr>
+
+            <td data-title ="Name">
+                @Html.DisplayFor(model => model.Name)
+            </td>
+
+            <td data-title="Email">
+                @Html.DisplayFor(model => model.Email)
+            </td>
+
+
+            <td data-title="Address1">
+                @Html.DisplayFor(model => model.Address1)
+            </td>
+
+            <td data-title="Address2">
+                @Html.DisplayFor(model => model.Address2)
+            </td>
+
+            <td data-title="City">
+                @Html.DisplayFor(model => model.City)
+            </td>
+
+            <td data-title="State">
+                @Html.DisplayFor(model => model.State)
+            </td>
+
+            <td data-title="ZipCode">
+                @Html.DisplayFor(model => model.ZipCode)
+            </td>
+
+        </tr>
+    </tbody>
+</table>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" style="color:white">Edit</a> |
+    <a asp-action="Index" style="color:white">Back to List</a> |
+     <a asp-action="Delete" style="color:white" asp-route-id="@Model?.Id">Delete</a>
+</div>
+<br />
+<br />
